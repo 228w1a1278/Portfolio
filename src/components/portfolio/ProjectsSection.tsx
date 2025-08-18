@@ -1,6 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { ExternalLink, Github } from 'lucide-react';
 
 const ProjectsSection = () => {
@@ -9,48 +8,40 @@ const ProjectsSection = () => {
       title: "QuickCart",
       description: "Modern e-commerce application built with Next.js featuring user authentication, cart functionality, and event handling.",
       technologies: ["Next.js", "Clerk", "Inngest", "TypeScript"],
-      category: "Full Stack"
+      category: "Mern Stack",
+      github: "https://github.com/228w1a1278/E-COMM",
+      external: "https://e-comm-13nn.vercel.app/"
     },
     {
       title: "Password Manager",
       description: "Secure password storage application with encrypted backend, intuitive UI, and real-time notifications.",
       technologies: ["React", "MongoDB", "Node.js", "Encryption"],
-      category: "Security"
+      category: "Security",
+      github: "https://github.com/228w1a1278/Password-Manager"
     },
     {
-      title: "Food App Clone",
-      description: "Complete food ordering platform with modern UI/UX, real-time ordering, and payment integration.",
-      technologies: ["React", "Payment Gateway", "REST API"],
-      category: "E-commerce"
-    },
-    {
-      title: "E-commerce Website",
-      description: "Full-featured online store with admin dashboard, payment processing, and responsive design.",
-      technologies: ["React", "Payment Gateway", "Admin Panel", "Vercel"],
-      category: "E-commerce"
+      title: "Voting Application",
+      description: "Decentralized voting app built with blockchain technology for secure and transparent elections.",
+      technologies: ["Solidity", "React", "Ethereum", "Smart Contracts"],
+      category: "Blockchain",
+      github: "https://github.com/228w1a1278/Blockchain_Voting_Web"
     },
     {
       title: "Weather App",
-      description: "Real-time weather application fetching data from external APIs with clean, intuitive interface.",
-      technologies: ["JavaScript", "Weather API", "CSS"],
-      category: "Web App"
+      description: "Real-time weather app fetching data from external APIs with clean, intuitive interface.",
+      technologies: ["React-Native", "Weather API", "CSS"],
+      category: "React-Native app",
+      github: "https://github.com/228w1a1278/WeatherApp"
     },
     {
       title: "Remote Sensing ML Project",
       description: "Machine learning solution for classifying satellite imagery using NDVI and deep learning models.",
       technologies: ["Python", "TensorFlow", "NDVI", "Landsat-8"],
-      category: "Machine Learning"
-    },
-    {
-      title: "GNSS Signal Classification",
-      description: "Advanced signal processing project for LOS/NLOS classification using Random Forest algorithms.",
-      technologies: ["Python", "Random Forest", "Signal Processing", "Excel"],
-      category: "Machine Learning"
+      category: "Machine Learning",
+      github: "https://github.com/228w1a1278/LandCover-Classification"
     }
   ];
 
-  const categories = ["All", "Full Stack", "E-commerce", "Web App", "Security", "Machine Learning"];
-  
   return (
     <section id="projects" className="py-20 relative">
       <div className="container mx-auto px-4">
@@ -65,22 +56,47 @@ const ProjectsSection = () => {
           {projects.map((project, index) => (
             <Card 
               key={project.title} 
-              className="bg-card/50 backdrop-blur-sm border-border hover-lift hover:border-primary/50 transition-all duration-300 card-glow"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="bg-card/50 backdrop-blur-sm border-border hover-lift hover:border-primary/50 transition-all duration-300 card-glow opacity-0 transform translate-y-6 animate-fade-in"
+              style={{ animationDelay: `${index * 0.2}s`, animationFillMode: 'forwards' }}
             >
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="secondary" className="text-xs">
                     {project.category}
                   </Badge>
-                  <div className="flex space-x-2">
-                    <Button variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
-                      <Github className="h-4 w-4" />
-                    </Button>
-                    <Button variant="ghost" size="icon" className="h-8 w-8 hover:text-primary">
-                      <ExternalLink className="h-4 w-4" />
-                    </Button>
-                  </div>
+                 <div className="flex space-x-2">
+  {project.github && (
+    <div className="relative group">
+      <a
+        href={project.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex h-8 w-8 items-center justify-center rounded hover:text-primary transition-colors"
+      >
+        <Github className="h-4 w-4" />
+      </a>
+      <span className="absolute -top-7 left-1/2 -translate-x-1/2 bg-background text-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
+        Open GitHub
+      </span>
+    </div>
+  )}
+  {project.external && (
+    <div className="relative group">
+      <a
+        href={project.external}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex h-8 w-8 items-center justify-center rounded hover:text-primary transition-colors"
+      >
+        <ExternalLink className="h-4 w-4" />
+      </a>
+      <span className="absolute -top-7 left-1/2 -translate-x-1/2 bg-background text-primary text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md">
+        Open Live Demo
+      </span>
+    </div>
+  )}
+</div>
+
                 </div>
                 <CardTitle className="text-lg">{project.title}</CardTitle>
                 <CardDescription className="text-sm leading-relaxed">
@@ -105,16 +121,30 @@ const ProjectsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="border-primary text-primary hover:bg-primary hover:text-background transition-all duration-300"
+          <a
+            href="https://github.com/228w1a1278"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center border border-primary text-primary px-6 py-3 rounded-lg hover:bg-primary hover:text-background transition-all duration-300"
           >
             <Github className="mr-2 h-4 w-4" />
             View All Projects on GitHub
-          </Button>
+          </a>
         </div>
       </div>
+
+      <style>
+{`
+  @keyframes fade-in {
+    0% { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+`}
+</style>
+
     </section>
   );
 };

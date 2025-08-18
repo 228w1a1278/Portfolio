@@ -14,12 +14,12 @@ const Navigation = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Removed separate Contact item
   const navItems = [
     { label: 'About', href: '#hero' },
-    { label: 'Experience', href: '#experience' },
+    { label: 'Education', href: '#education' }, // Updated href
     { label: 'Projects', href: '#projects' },
     { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
