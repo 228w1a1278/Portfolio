@@ -17,7 +17,7 @@ const SkillsSection = () => {
     {
       title: "DevOps & Cloud",
       icon: Cloud,
-      skills: ["Git", "Docker", "Kubernetes", "AWS", "Salesforce"]
+      skills: ["Git", "Docker", "Kubernetes", "AWS", "Salesforce","Google Cloud"]
     },
     {
       title: "Machine Learning",
@@ -34,6 +34,11 @@ const SkillsSection = () => {
   const languages = ["English", "Telugu", "Hindi"];
 
   const achievements = [
+    {
+      title:"AWS Cloud Practitioner",
+      description: "Oct 2025",
+      icon:"☁️"
+    },
   {
     title: "Salesforce Administrator (Udemy Certified)",
     description: "Apr 2025",
